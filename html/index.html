@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loja Ponte Preta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="https://logodownload.org/wp-content/uploads/2017/02/ponte-preta-logo-escudo-0.png" alt="Logo" width="35" height="35">
+        Loja Ponte Preta
+      </a>
+
+   
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+  
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="#">Roupas</a>
+          <a class="nav-link" href="#">Periféricos</a>
+          <a class="nav-link" href="compra.html" id="carrinhoBtn">🛒 Carrinho (0)</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-5 pt-5">
+    <h2 class="fw-semibold mt-4">Bem-vindo à Loja da Macaca</h2>
+    <p class="text-muted mb-4">Aqui você encontra produtos oficiais da Ponte Preta — gerenciada pelo torcedor <strong>Nicolas Calegon Damasceno</strong>.</p>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="https://th.bing.com/th/id/OIP.YRQIgENCpyQ_e4i_exKeJwHaHa?w=194&h=194" class="card-img-top" alt="Camisa Oficial 2025">
+          <div class="card-body text-center">
+            <h5 class="card-title">Camisa Oficial 2025</h5>
+            <p class="text-primary fw-bold">R$ 299,99</p>
+            <button class="btn btn-primary w-100" onclick="adicionarAoCarrinho('Camisa Oficial 2025', 299.99)">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="https://th.bing.com/th/id/OIP.0wlTam2_i8X5z3cjoYzU1gHaHa?w=182&h=183" class="card-img-top" alt="Copo Personalizado">
+          <div class="card-body text-center">
+            <h5 class="card-title">Copo Personalizado</h5>
+            <p class="text-primary fw-bold">R$ 79,99</p>
+            <button class="btn btn-primary w-100" onclick="adicionarAoCarrinho('Copo Personalizado', 79.99)">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="https://th.bing.com/th/id/OIP.zoikrOHVwh0DtgCkefQFzgHaHa?w=166&h=180" class="card-img-top" alt="Tábua Personalizada">
+          <div class="card-body text-center">
+            <h5 class="card-title">Tábua Personalizada</h5>
+            <p class="text-primary fw-bold">R$ 150,00</p>
+            <button class="btn btn-primary w-100" onclick="adicionarAoCarrinho('Tábua Personalizada', 150.00)">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="https://th.bing.com/th/id/OIP.89Z9wveQcvU_jV91mB-rVQAAAA?w=178&h=180" class="card-img-top" alt="Chaveiro da Ponte Preta">
+          <div class="card-body text-center">
+            <h5 class="card-title">Chaveiro da Ponte Preta</h5>
+            <p class="text-primary fw-bold">R$ 19,00</p>
+            <button class="btn btn-primary w-100" onclick="adicionarAoCarrinho('Chaveiro da Ponte Preta', 19.00)">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="https://i.pinimg.com/736x/2b/6a/70/2b6a7091c7a5dfe3e3e9bb8935b8aab1.jpg" class="card-img-top" alt="Agasalho da Ponte Preta">
+          <div class="card-body text-center">
+            <h5 class="card-title">Agasalho da Ponte Preta</h5>
+            <p class="text-primary fw-bold">R$ 250,00</p>
+            <button class="btn btn-primary w-100" onclick="adicionarAoCarrinho('Agasalho da Ponte Preta', 250.00)">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    function atualizarCarrinho() {
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      const btn = document.getElementById("carrinhoBtn");
+      if (btn) btn.textContent = `🛒 Carrinho (${carrinho.length})`;
+    }
+
+    function adicionarAoCarrinho(nome, preco) {
+      carrinho.push({ nome, preco });
+      atualizarCarrinho();
+      alert(`${nome} foi adicionado ao carrinho!`);
+    }
+
+    atualizarCarrinho();
+  </script>
+</body>
+</html>
